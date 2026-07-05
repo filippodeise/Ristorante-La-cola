@@ -427,10 +427,10 @@
   }
   .zpx-tile picture, .zpx-tile img{ display:block; width:100%; height:100%; object-fit:cover; }
 
-  .zpx-0{ width:26vw; height:26vh; z-index:1; }
+  .zpx-0{ width:26vw; height:26vh; z-index:10; }
   .zpx-1{ width:34vw; height:30vh; z-index:2; }
-  .zpx-2{ width:20vw; height:44vh; z-index:2; }
-  .zpx-3{ width:25vw; height:25vh; z-index:2; }
+  .zpx-2{ width:20vw; height:44vh; z-index:3; }
+  .zpx-3{ width:25vw; height:25vh; z-index:4; }
   .zpx-4{ width:20vw; height:25vh; z-index:2; }
   .zpx-5{ width:30vw; height:25vh; z-index:3; }
   .zpx-6{ width:15vw; height:15vh; z-index:4; }
@@ -774,7 +774,7 @@
   <div class="container zpx-head reveal">
     <span class="eyebrow">Cucina &amp; Galleria</span>
     <h2>Un assaggio della nostra cucina e del locale</h2>
-    <p>Pasta fresca, pizza al forno a legna, tartufo della Lessinia e la nostra terrazza panoramica: scorri per scoprire cosa vi aspetta a La Cola.</p>
+    <p>Pasta fresca, pizza al forno a legna e tartufo della Lessinia: scorri per scoprire i piatti che vi aspettano a La Cola.</p>
   </div>
 
   <div class="zoom-parallax" id="zoomParallax">
@@ -783,22 +783,22 @@
         <picture><source srcset="assets/images/vista-verona.webp" type="image/webp"><img loading="lazy" alt="Panorama della città di Verona visto dalle colline al tramonto" src="assets/images/vista-verona.jpg"></picture>
       </div>
       <div class="zpx-tile zpx-1">
-        <picture><source srcset="assets/images/terrazza-vista.webp" type="image/webp"><img loading="lazy" alt="Vista panoramica dalla terrazza sulla città di Verona" src="assets/images/terrazza-vista.jpg"></picture>
-      </div>
-      <div class="zpx-tile zpx-2">
-        <picture><source srcset="assets/images/terrazza-coperta.webp" type="image/webp"><img loading="lazy" alt="La veranda coperta con i tavoli apparecchiati" src="assets/images/terrazza-coperta.jpg"></picture>
-      </div>
-      <div class="zpx-tile zpx-3">
         <picture><source srcset="assets/images/tagliolini-tartufo.webp" type="image/webp"><img loading="lazy" alt="Tagliolini al tartufo nero della Lessinia" src="assets/images/tagliolini-tartufo.jpg"></picture>
       </div>
-      <div class="zpx-tile zpx-4">
+      <div class="zpx-tile zpx-2">
         <picture><source srcset="assets/images/risotto-tartufo.webp" type="image/webp"><img loading="lazy" alt="Risotto al tartufo, il piatto premiato al concorso Il Risotto del Sommelier" src="assets/images/risotto-tartufo.jpg"></picture>
       </div>
+      <div class="zpx-tile zpx-3">
+        <picture><source srcset="assets/images/pizza-crudo-burrata.webp" type="image/webp"><img loading="lazy" alt="Pizza con crudo di Parma e burrata" src="assets/images/pizza-crudo-burrata.jpg"></picture>
+      </div>
+      <div class="zpx-tile zpx-4">
+        <picture><source srcset="assets/images/galletto-griglia.webp" type="image/webp"><img loading="lazy" alt="Galletto alla griglia con patate e insalata" src="assets/images/galletto-griglia.jpg"></picture>
+      </div>
       <div class="zpx-tile zpx-5">
-        <picture><source srcset="assets/images/drone-esterno.webp" type="image/webp"><img loading="lazy" alt="Vista dall'alto dell'intera proprietà immersa nel verde" src="assets/images/drone-esterno.jpg"></picture>
+        <picture><source srcset="assets/images/salumi-formaggi.webp" type="image/webp"><img loading="lazy" alt="Tagliere di salumi e formaggi tipici veneti" src="assets/images/salumi-formaggi.jpg"></picture>
       </div>
       <div class="zpx-tile zpx-6">
-        <picture><source srcset="assets/images/esterno-facciata.webp" type="image/webp"><img loading="lazy" alt="Facciata storica della Trattoria La Cola" src="assets/images/esterno-facciata.jpg"></picture>
+        <picture><source srcset="assets/images/antipasti-fritti.webp" type="image/webp"><img loading="lazy" alt="Tavola di antipasti fritti e specialità della casa" src="assets/images/antipasti-fritti.jpg"></picture>
       </div>
     </div>
   </div>
@@ -1150,31 +1150,39 @@
   /* ------------------------------------------------------------
      Cucina & Galleria — zoom parallax allo scroll
      Adattato in vanilla JS dal componente zoom-parallax (21st.dev):
-     ogni tile scala in modo indipendente in base all'avanzamento
-     dello scroll all'interno della sezione "pinnata".
+     l'immagine centrale (vista-verona) si ingrandisce fino a
+     riempire lo schermo, mentre i piatti intorno sfumano via.
      ------------------------------------------------------------ */
   (function initZoomParallax(){
     var wrap = document.getElementById('zoomParallax');
     if(!wrap) return;
     var tiles = Array.prototype.slice.call(wrap.querySelectorAll('.zpx-tile'));
-    var scaleTargets = [4, 5, 6, 5, 6, 8, 9]; // una per tile, stesso ordine del markup
+    // indice 0 = immagine centrale (vista-verona): unica che si ingrandisce davvero
+    var scaleTargets = [4.2, 1.15, 1.15, 1.15, 1.15, 1.15, 1.15];
     var offsets = [
       {x:'0vw',     y:'0vh'},     // 0 — vista-verona, immagine centrale
-      {x:'5vw',     y:'-30vh'},   // 1 — terrazza-vista
-      {x:'-25vw',   y:'-10vh'},   // 2 — terrazza-coperta
-      {x:'27.5vw',  y:'0vh'},     // 3 — tagliolini-tartufo
-      {x:'5vw',     y:'27.5vh'},  // 4 — risotto-tartufo
-      {x:'-22.5vw', y:'27.5vh'},  // 5 — drone-esterno
-      {x:'25vw',    y:'22.5vh'}   // 6 — esterno-facciata
+      {x:'5vw',     y:'-30vh'},   // 1 — tagliolini al tartufo
+      {x:'-25vw',   y:'-10vh'},   // 2 — risotto al tartufo
+      {x:'27.5vw',  y:'0vh'},     // 3 — pizza crudo e burrata
+      {x:'5vw',     y:'27.5vh'},  // 4 — galletto alla griglia
+      {x:'-22.5vw', y:'27.5vh'},  // 5 — tagliere di salumi e formaggi
+      {x:'25vw',    y:'22.5vh'}   // 6 — antipasti fritti
     ];
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+    function applyFrame(progress, tile, i){
+      var scale = 1 + progress * (scaleTargets[i] - 1);
+      tile.style.transform = 'translate(-50%,-50%) translate(' + offsets[i].x + ',' + offsets[i].y + ') scale(' + scale.toFixed(3) + ')';
+      if(i > 0){
+        // i piatti intorno sfumano e si allontanano leggermente mentre il centro cresce
+        var fade = Math.max(0, 1 - progress * 1.15);
+        tile.style.opacity = fade.toFixed(3);
+      }
+    }
+
     if(reduceMotion){
       wrap.classList.add('zpx-static');
-      tiles.forEach(function(tile, i){
-        var mild = 1 + (scaleTargets[i]-1) * 0.12; // leggero scarto statico, niente animazione
-        tile.style.transform = 'translate(-50%,-50%) translate(' + offsets[i].x + ',' + offsets[i].y + ') scale(' + mild.toFixed(3) + ')';
-      });
+      tiles.forEach(function(tile, i){ applyFrame(i === 0 ? 0.3 : 0, tile, i); });
       return;
     }
 
@@ -1184,10 +1192,7 @@
       var total = rect.height - window.innerHeight;
       var progress = total > 0 ? (-rect.top) / total : 0;
       progress = Math.min(Math.max(progress, 0), 1);
-      tiles.forEach(function(tile, i){
-        var scale = 1 + progress * (scaleTargets[i] - 1);
-        tile.style.transform = 'translate(-50%,-50%) translate(' + offsets[i].x + ',' + offsets[i].y + ') scale(' + scale.toFixed(3) + ')';
-      });
+      tiles.forEach(function(tile, i){ applyFrame(progress, tile, i); });
       ticking = false;
     }
     function onScroll(){
