@@ -302,7 +302,7 @@
     content:"";
     position:absolute; inset:0;
     background:
-      linear-gradient(180deg, rgba(30,22,16,0.35) 0%, rgba(30,22,16,0.18) 32%, rgba(30,22,16,0.55) 78%, rgba(20,15,10,0.86) 100%);
+      linear-gradient(180deg, rgba(20,15,11,0.58) 0%, rgba(20,15,11,0.42) 30%, rgba(20,15,11,0.62) 68%, rgba(15,11,8,0.92) 100%);
   }
   .hero-inner{
     position:relative; z-index:2;
@@ -371,8 +371,9 @@
   .storia-photo{ position:relative; }
   .storia-photo img{ border-radius:4px; box-shadow:var(--shadow-soft); width:100%; height:520px; object-fit:cover; }
   .storia-photo .float-photo{
-    position:absolute; width:46%; bottom:-40px; left:-40px;
+    position:absolute; width:46%; height:300px; bottom:-40px; left:-40px;
     border:6px solid var(--parchment); box-shadow:var(--shadow-hard); border-radius:3px;
+    object-fit:cover; object-position:75% 32%;
   }
   .storia-stats{ display:flex; gap:36px; margin-top:34px; flex-wrap:wrap; }
   .storia-stats .stat b{ display:block; font-family:var(--font-display); font-size:2.1rem; color:var(--rust); }
@@ -382,51 +383,7 @@
     .storia-grid{ grid-template-columns:1fr; gap:80px; }
     .storia-photo{ order:-1; }
     .storia-photo img{ height:380px; }
-    .storia-photo .float-photo{ width:52%; bottom:-30px; left:-20px; }
-  }
-
-  /* ============================================================
-     5. PIATTI (editorial asymmetric grid)
-     ============================================================ */
-  .piatti{ padding:100px 0; background:var(--olive); color:var(--parchment); }
-  .piatti-head{ text-align:center; max-width:640px; margin:0 auto 60px; }
-  .piatti-head .eyebrow{ color:#DDBE7A; justify-content:center; }
-  .piatti-head .eyebrow::before{ background:#DDBE7A; }
-  .piatti-head h2{ color:var(--white); font-size:clamp(2rem,3.6vw,2.9rem); margin-top:16px; }
-  .piatti-head p{ color:rgba(246,239,228,0.75); margin-top:16px; }
-
-  .piatti-grid{
-    display:grid;
-    grid-template-columns:repeat(6, 1fr);
-    grid-auto-rows:180px;
-    gap:18px;
-  }
-  .dish{
-    position:relative; overflow:hidden; border-radius:5px;
-    grid-column:span 3; grid-row:span 2;
-  }
-  .dish.big{ grid-column:span 4; grid-row:span 3; }
-  .dish.small{ grid-column:span 2; grid-row:span 2; }
-  .dish img{
-    width:100%; height:100%; object-fit:cover;
-    transition:transform .7s cubic-bezier(.2,.7,.2,1);
-  }
-  .dish:hover img{ transform:scale(1.07); }
-  .dish::after{
-    content:""; position:absolute; inset:0;
-    background:linear-gradient(180deg, rgba(20,20,10,0) 40%, rgba(20,16,8,0.86) 100%);
-  }
-  .dish-label{
-    position:absolute; left:0; right:0; bottom:0; z-index:2;
-    padding:20px; color:var(--white);
-  }
-  .dish-label .tag{ font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:#F0C878; display:block; margin-bottom:4px; }
-  .dish-label h3{ color:var(--white); font-size:1.15rem; font-weight:500; }
-  .dish.big .dish-label h3{ font-size:1.55rem; }
-
-  @media (max-width:880px){
-    .piatti-grid{ grid-template-columns:repeat(2,1fr); grid-auto-rows:220px; }
-    .dish, .dish.big, .dish.small{ grid-column:span 1; grid-row:span 1; }
+    .storia-photo .float-photo{ width:52%; height:230px; bottom:-30px; left:-20px; }
   }
 
   /* ============================================================
@@ -566,6 +523,12 @@
 
   .map-wrap{ border-radius:6px; overflow:hidden; border:1px solid rgba(246,239,228,0.18); height:100%; min-height:340px; }
   .map-wrap iframe{ width:100%; height:100%; min-height:340px; border:0; filter:grayscale(0.25) contrast(1.05); }
+  .map-link{
+    display:inline-flex; align-items:center; gap:8px; margin-top:16px;
+    font-size:0.88rem; font-weight:600; color:#F0C878;
+    transition:gap .25s ease;
+  }
+  .map-link:hover{ gap:12px; text-decoration:underline; }
 
   @media (max-width:900px){ .info-grid{ grid-template-columns:1fr; } }
 
@@ -603,11 +566,11 @@
   .call-panel img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
   .call-panel::after{
     content:""; position:absolute; inset:0;
-    background:linear-gradient(180deg, rgba(34,26,21,0.15) 0%, rgba(34,26,21,0.55) 55%, rgba(20,15,11,0.92) 100%);
+    background:linear-gradient(180deg, rgba(20,15,11,0.45) 0%, rgba(20,15,11,0.72) 45%, rgba(15,11,8,0.95) 100%);
   }
-  .call-panel-content{ position:relative; z-index:2; padding:40px; color:var(--white); }
+  .call-panel-content{ position:relative; z-index:2; padding:40px; color:var(--white); text-shadow:0 2px 12px rgba(0,0,0,0.35); }
   .call-panel-content h3{ font-size:2.6rem; color:var(--white); margin:12px 0 14px; }
-  .call-panel-content p{ color:rgba(246,239,228,0.85); margin-bottom:24px; max-width:380px; }
+  .call-panel-content p{ color:rgba(246,239,228,0.92); margin-bottom:24px; max-width:380px; }
 
   @media (max-width:920px){ .contatti-grid{ grid-template-columns:1fr; } .call-panel{ min-height:340px; } }
 
@@ -722,8 +685,7 @@
 
     <nav class="nav-desktop" aria-label="Navigazione principale">
       <a href="#storia">La Storia</a>
-      <a href="#piatti">Cucina</a>
-      <a href="#galleria">Galleria</a>
+      <a href="#galleria">Cucina &amp; Galleria</a>
       <a href="#recensioni">Recensioni</a>
       <a href="#info">Orari &amp; Location</a>
       <a href="#contatti">Contatti</a>
@@ -744,8 +706,7 @@
 
 <nav class="mobile-nav" id="mobileNav" aria-label="Navigazione mobile">
   <a href="#storia">La Storia</a>
-  <a href="#piatti">Cucina</a>
-  <a href="#galleria">Galleria</a>
+  <a href="#galleria">Cucina &amp; Galleria</a>
   <a href="#recensioni">Recensioni</a>
   <a href="#info">Orari &amp; Location</a>
   <a href="#contatti">Contatti</a>
@@ -776,7 +737,7 @@
     <p class="hero-sub reveal">Trattoria e pizzeria sulle colline veronesi: ricette tramandate da tre generazioni, tartufo, forno a legna e una terrazza affacciata su tutta la città.</p>
     <div class="hero-cta reveal">
       <a href="tel:+390458340681" class="btn btn-primary">Chiama e prenota</a>
-      <a href="#piatti" class="btn btn-ghost">Scopri la cucina</a>
+      <a href="#galleria" class="btn btn-ghost">Scopri la cucina</a>
     </div>
   </div>
 
@@ -814,48 +775,42 @@
       </div>
     </div>
     <div class="storia-photo reveal">
-      <picture><source srcset="assets/images/drone-esterno.webp" type="image/webp"><img loading="lazy" alt="Vista aerea della Trattoria La Cola immersa tra gli ulivi sulle colline di Verona" src="assets/images/drone-esterno.jpg"></picture>
+      <picture><source srcset="assets/images/terrazza-coperta.webp" type="image/webp"><img loading="lazy" alt="La veranda coperta della Trattoria La Cola con i tavoli apparecchiati" src="assets/images/terrazza-coperta.jpg"></picture>
       <picture><source srcset="assets/images/ingresso-porta.webp" type="image/webp"><img class="float-photo"  loading="lazy" alt="Dettaglio della porta d'ingresso storica con l'insegna incisa La Cola" src="assets/images/ingresso-porta.jpg"></picture>
     </div>
   </div>
 </section>
 
 <!-- ============================================================
-     PIATTI
+     CUCINA & GALLERIA (sezione unica)
      ============================================================ -->
-<section class="piatti" id="piatti">
+<section class="gallery" id="galleria">
   <div class="container">
-    <div class="piatti-head reveal">
-      <span class="eyebrow">La cucina</span>
-      <h2>Sapori veronesi, un tocco di tartufo</h2>
-      <p>Dalla pasta fresca alla pizza al forno a legna, ogni piatto racconta il territorio: prodotti locali, stagionalità e la passione per il tartufo della Lessinia che ha reso La Cola un punto di riferimento in collina.</p>
+    <div class="gallery-head reveal">
+      <div>
+        <span class="eyebrow">Cucina &amp; Galleria</span>
+        <h2>Un assaggio della nostra cucina e del locale</h2>
+      </div>
+      <p>Pasta fresca, pizza al forno a legna, tartufo della Lessinia e la nostra terrazza panoramica: un piccolo assaggio di ciò che vi aspetta a La Cola.</p>
     </div>
 
-    <div class="piatti-grid reveal">
-      <a class="dish big" href="#galleria">
-        <picture><source srcset="assets/images/tagliolini-tartufo.webp" type="image/webp"><img loading="lazy" alt="Tagliolini al tartufo nero della Lessinia" src="assets/images/tagliolini-tartufo.jpg"></picture>
-        <span class="dish-label"><span class="tag">Piatto signature</span><h3>Tagliolini al tartufo nero</h3></span>
-      </a>
-      <a class="dish" href="#galleria">
-        <picture><source srcset="assets/images/galletto-griglia.webp" type="image/webp"><img loading="lazy" alt="Galletto alla griglia con patate e insalata" src="assets/images/galletto-griglia.jpg"></picture>
-        <span class="dish-label"><span class="tag">Alla brace</span><h3>Galletto alla griglia</h3></span>
-      </a>
-      <a class="dish small" href="#galleria">
-        <picture><source srcset="assets/images/pizza-alici-uovo.webp" type="image/webp"><img loading="lazy" alt="Pizza gourmet con alici, capperi, uovo e basilico" src="assets/images/pizza-alici-uovo.jpg"></picture>
-        <span class="dish-label"><span class="tag">Forno a legna</span><h3>Pizza gourmet</h3></span>
-      </a>
-      <a class="dish small" href="#galleria">
-        <picture><source srcset="assets/images/salumi-formaggi.webp" type="image/webp"><img loading="lazy" alt="Tagliere di salumi e formaggi tipici veneti" src="assets/images/salumi-formaggi.jpg"></picture>
-        <span class="dish-label"><span class="tag">Da condividere</span><h3>Taglieri del territorio</h3></span>
-      </a>
-      <a class="dish" href="#galleria">
-        <picture><source srcset="assets/images/tagliatelle-funghi.webp" type="image/webp"><img loading="lazy" alt="Tagliatelle fatte in casa con funghi porcini" src="assets/images/tagliatelle-funghi.jpg"></picture>
-        <span class="dish-label"><span class="tag">Pasta fresca</span><h3>Tagliatelle ai porcini</h3></span>
-      </a>
-      <a class="dish" href="#galleria">
-        <picture><source srcset="assets/images/pizza-tonno-cipolla.webp" type="image/webp"><img loading="lazy" alt="Pizza con tonno e cipolla rossa" src="assets/images/pizza-tonno-cipolla.jpg"></picture>
-        <span class="dish-label"><span class="tag">Forno a legna</span><h3>Pizza tonno e cipolla</h3></span>
-      </a>
+    <div class="gallery-grid reveal" id="galleryGrid">
+      <figure data-full="assets/images/tagliolini-tartufo.jpg"><picture><source srcset="assets/images/tagliolini-tartufo.webp" type="image/webp"><img loading="lazy" alt="Tagliolini al tartufo nero della Lessinia" src="assets/images/tagliolini-tartufo.jpg"></picture></figure>
+      <figure data-full="assets/images/terrazza-vista.jpg"><picture><source srcset="assets/images/terrazza-vista.webp" type="image/webp"><img loading="lazy" alt="Vista panoramica dalla terrazza sulla città di Verona" src="assets/images/terrazza-vista.jpg"></picture></figure>
+      <figure data-full="assets/images/pizza-alici-uovo.jpg"><picture><source srcset="assets/images/pizza-alici-uovo.webp" type="image/webp"><img loading="lazy" alt="Pizza gourmet con alici, capperi, uovo e basilico" src="assets/images/pizza-alici-uovo.jpg"></picture></figure>
+      <figure data-full="assets/images/galletto-griglia.jpg"><picture><source srcset="assets/images/galletto-griglia.webp" type="image/webp"><img loading="lazy" alt="Galletto alla griglia con patate e insalata" src="assets/images/galletto-griglia.jpg"></picture></figure>
+      <figure data-full="assets/images/terrazza-coperta.jpg"><picture><source srcset="assets/images/terrazza-coperta.webp" type="image/webp"><img loading="lazy" alt="La veranda coperta con i tavoli apparecchiati" src="assets/images/terrazza-coperta.jpg"></picture></figure>
+      <figure data-full="assets/images/risotto-tartufo.jpg"><picture><source srcset="assets/images/risotto-tartufo.webp" type="image/webp"><img loading="lazy" alt="Risotto al tartufo, il piatto premiato al concorso Il Risotto del Sommelier" src="assets/images/risotto-tartufo.jpg"></picture></figure>
+      <figure data-full="assets/images/salumi-formaggi.jpg"><picture><source srcset="assets/images/salumi-formaggi.webp" type="image/webp"><img loading="lazy" alt="Tagliere di salumi e formaggi tipici veneti" src="assets/images/salumi-formaggi.jpg"></picture></figure>
+      <figure data-full="assets/images/esterno-facciata.jpg"><picture><source srcset="assets/images/esterno-facciata.webp" type="image/webp"><img loading="lazy" alt="Facciata storica della Trattoria La Cola" src="assets/images/esterno-facciata.jpg"></picture></figure>
+      <figure data-full="assets/images/pizza-crudo-burrata.jpg"><picture><source srcset="assets/images/pizza-crudo-burrata.webp" type="image/webp"><img loading="lazy" alt="Pizza con crudo di Parma e burrata" src="assets/images/pizza-crudo-burrata.jpg"></picture></figure>
+      <figure data-full="assets/images/antipasti-fritti.jpg"><picture><source srcset="assets/images/antipasti-fritti.webp" type="image/webp"><img loading="lazy" alt="Tavola di antipasti fritti e specialità della casa" src="assets/images/antipasti-fritti.jpg"></picture></figure>
+      <figure data-full="assets/images/ravioli-zucca.jpg"><picture><source srcset="assets/images/ravioli-zucca.webp" type="image/webp"><img loading="lazy" alt="Ravioli di zucca fatti in casa con burro, salvia e briciole croccanti" src="assets/images/ravioli-zucca.jpg"></picture></figure>
+      <figure data-full="assets/images/pizza-tonno-cipolla.jpg"><picture><source srcset="assets/images/pizza-tonno-cipolla.webp" type="image/webp"><img loading="lazy" alt="Pizza con tonno, mozzarella e cipolla rossa" src="assets/images/pizza-tonno-cipolla.jpg"></picture></figure>
+      <figure data-full="assets/images/tagliatelle-funghi.jpg"><picture><source srcset="assets/images/tagliatelle-funghi.webp" type="image/webp"><img loading="lazy" alt="Spaghetti fatti in casa con finferli freschi" src="assets/images/tagliatelle-funghi.jpg"></picture></figure>
+      <figure data-full="assets/images/ingresso-porta.jpg"><picture><source srcset="assets/images/ingresso-porta.webp" type="image/webp"><img loading="lazy" alt="Insegna storica incisa sulla porta d'ingresso" src="assets/images/ingresso-porta.jpg"></picture></figure>
+      <figure data-full="assets/images/drone-esterno.jpg"><picture><source srcset="assets/images/drone-esterno.webp" type="image/webp"><img loading="lazy" alt="Vista dall'alto dell'intera proprietà immersa nel verde" src="assets/images/drone-esterno.jpg"></picture></figure>
+      <figure data-full="assets/images/vista-verona.jpg"><picture><source srcset="assets/images/vista-verona.webp" type="image/webp"><img loading="lazy" alt="Panorama della città di Verona visto dalle colline al tramonto" src="assets/images/vista-verona.jpg"></picture></figure>
     </div>
   </div>
 </section>
@@ -875,37 +830,6 @@
         <p>In occasione della 50ª edizione della Fiera del Riso di Isola della Scala, il nostro risotto agli asparagi settembrini con cuore di trippa di baccalà, aria di Malanotte e tartufo nero della Lessinia si è aggiudicato il primo premio al concorso nazionale "Il Risotto del Sommelier".</p>
         <blockquote>«La passione dello chef è commovente. Materia prima genuina a km 0.»</blockquote>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     GALLERIA
-     ============================================================ -->
-<section class="gallery" id="galleria">
-  <div class="container">
-    <div class="gallery-head reveal">
-      <div>
-        <span class="eyebrow">Galleria</span>
-        <h2>Un assaggio del locale</h2>
-      </div>
-      <p>Sale interne, terrazza panoramica e i piatti che raccontano la nostra cucina: un piccolo assaggio di ciò che vi aspetta a La Cola.</p>
-    </div>
-
-    <div class="gallery-grid reveal" id="galleryGrid">
-      <figure data-full="assets/images/terrazza-vista.jpg"><picture><source srcset="assets/images/terrazza-vista.webp" type="image/webp"><img loading="lazy" alt="Vista panoramica dalla terrazza sulla città di Verona" src="assets/images/terrazza-vista.jpg"></picture></figure>
-      <figure data-full="assets/images/pizza-alici-uovo.jpg"><picture><source srcset="assets/images/pizza-alici-uovo.webp" type="image/webp"><img loading="lazy" alt="Pizza gourmet con alici, capperi e uovo poché" src="assets/images/pizza-alici-uovo.jpg"></picture></figure>
-      <figure data-full="assets/images/terrazza-coperta.jpg"><picture><source srcset="assets/images/terrazza-coperta.webp" type="image/webp"><img loading="lazy" alt="La terrazza coperta con i tavoli apparecchiati" src="assets/images/terrazza-coperta.jpg"></picture></figure>
-      <figure data-full="assets/images/salumi-formaggi.jpg"><picture><source srcset="assets/images/salumi-formaggi.webp" type="image/webp"><img loading="lazy" alt="Tagliere di salumi e formaggi" src="assets/images/salumi-formaggi.jpg"></picture></figure>
-      <figure data-full="assets/images/antipasti-fritti.jpg"><picture><source srcset="assets/images/antipasti-fritti.webp" type="image/webp"><img loading="lazy" alt="Tavola di antipasti fritti e specialità della casa" src="assets/images/antipasti-fritti.jpg"></picture></figure>
-      <figure data-full="assets/images/esterno-facciata.jpg"><picture><source srcset="assets/images/esterno-facciata.webp" type="image/webp"><img loading="lazy" alt="Facciata storica della Trattoria La Cola" src="assets/images/esterno-facciata.jpg"></picture></figure>
-      <figure data-full="assets/images/pizza-tonno-cipolla.jpg"><picture><source srcset="assets/images/pizza-tonno-cipolla.webp" type="image/webp"><img loading="lazy" alt="Pizza con tonno, mozzarella e cipolla rossa" src="assets/images/pizza-tonno-cipolla.jpg"></picture></figure>
-      <figure data-full="assets/images/veranda-pranzo.jpg"><picture><source srcset="assets/images/veranda-pranzo.webp" type="image/webp"><img loading="lazy" alt="Veranda allestita per il servizio di pranzo" src="assets/images/veranda-pranzo.jpg"></picture></figure>
-      <figure data-full="assets/images/panorama-colline.jpg"><picture><source srcset="assets/images/panorama-colline.webp" type="image/webp"><img loading="lazy" alt="Panorama sulle colline e sulla pianura veronese" src="assets/images/panorama-colline.jpg"></picture></figure>
-      <figure data-full="assets/images/terrazza-tavoli.jpg"><picture><source srcset="assets/images/terrazza-tavoli.webp" type="image/webp"><img loading="lazy" alt="Tavoli all'aperto pronti per il servizio serale" src="assets/images/terrazza-tavoli.jpg"></picture></figure>
-      <figure data-full="assets/images/ingresso-porta.jpg"><picture><source srcset="assets/images/ingresso-porta.webp" type="image/webp"><img loading="lazy" alt="Insegna storica incisa sulla porta d'ingresso" src="assets/images/ingresso-porta.jpg"></picture></figure>
-      <figure data-full="assets/images/drone-esterno.jpg"><picture><source srcset="assets/images/drone-esterno.webp" type="image/webp"><img loading="lazy" alt="Vista dall'alto dell'intera proprietà immersa nel verde" src="assets/images/drone-esterno.jpg"></picture></figure>
-      <figure data-full="assets/images/vista-verona.jpg"><picture><source srcset="assets/images/vista-verona.webp" type="image/webp"><img loading="lazy" alt="Panorama della città di Verona visto dalle colline al tramonto" src="assets/images/vista-verona.jpg"></picture></figure>
     </div>
   </div>
 </section>
@@ -985,6 +909,10 @@
           title="Mappa: Trattoria La Cola, Strada Per Montecchio 13, Verona">
         </iframe>
       </div>
+      <a class="map-link" href="https://www.google.com/maps/place/Trattoria+La+Cola+di+Cipriani+Francesca/@45.4980268,10.9930061,17z/data=!3m1!4b1!4m6!3m5!1s0x4781e29ca24eea47:0xf09a274e1e62f83a!8m2!3d45.4980231!4d10.995581!16s%2Fg%2F1tg77xlt?hl=it-IT&entry=ttu&g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">
+        Apri in Google Maps
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+      </a>
     </div>
   </div>
 </section>
@@ -1034,8 +962,8 @@
     <div class="reveal">
       <div class="call-panel">
         <picture>
-          <source srcset="assets/images/terrazza-tavoli.webp" type="image/webp">
-          <img src="assets/images/terrazza-tavoli.jpg" alt="" loading="lazy">
+          <source srcset="assets/images/terrazza-vista.webp" type="image/webp">
+          <img src="assets/images/terrazza-vista.jpg" alt="" loading="lazy">
         </picture>
         <div class="call-panel-content">
           <span class="eyebrow" style="color:#F0C878;">Prenota per telefono</span>
@@ -1064,8 +992,7 @@
         <h4>Il locale</h4>
         <ul>
           <li><a href="#storia">La Storia</a></li>
-          <li><a href="#piatti">Cucina</a></li>
-          <li><a href="#galleria">Galleria</a></li>
+          <li><a href="#galleria">Cucina &amp; Galleria</a></li>
           <li><a href="#recensioni">Recensioni</a></li>
         </ul>
       </div>
